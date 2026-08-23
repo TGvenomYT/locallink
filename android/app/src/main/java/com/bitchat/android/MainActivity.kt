@@ -39,6 +39,7 @@ import com.bitchat.android.onboarding.OnboardingCoordinator
 import com.bitchat.android.onboarding.OnboardingState
 import com.bitchat.android.onboarding.PermissionExplanationScreen
 import com.bitchat.android.onboarding.PermissionManager
+import com.bitchat.android.onboarding.WelcomeScreen
 import com.bitchat.android.ui.ChatScreen
 import com.bitchat.android.ui.ChatViewModel
 import com.bitchat.android.ui.OrientationAwareActivity
@@ -62,6 +63,9 @@ class MainActivity : OrientationAwareActivity() {
     private lateinit var unifiedMeshService: MeshService
     private val mainViewModel: MainViewModel by viewModels()
     private var pendingMeshForegroundServiceStart = false
+    // Guards the one-time first-run welcome carousel so it is shown before onboarding but never
+    // re-entered once the user has moved past it (e.g. after an Activity recreation).
+    private var welcomeAcknowledged = false
     private val chatViewModel: ChatViewModel by viewModels { 
         object : ViewModelProvider.Factory {
             override fun <T : androidx.lifecycle.ViewModel> create(modelClass: Class<T>): T {
@@ -232,7 +236,18 @@ class MainActivity : OrientationAwareActivity() {
             OnboardingState.PERMISSION_REQUESTING -> {
                 InitializingScreen(modifier)
             }
-            
+
+            OnboardingState.WELCOME -> {
+                WelcomeScreen(
+                    modifier = modifier,
+                    onGetStarted = {
+                        welcomeAcknowledged = true
+                        mainViewModel.updateOnboardingState(OnboardingState.CHECKING)
+                        checkOnboardingStatus()
+                    }
+                )
+            }
+
             OnboardingState.BLUETOOTH_CHECK -> {
                 BluetoothCheckScreen(
                     modifier = modifier,
@@ -364,6 +379,13 @@ class MainActivity : OrientationAwareActivity() {
     }
     
     private fun checkOnboardingStatus() {
+        // First-run users see the welcome carousel before anything else. Gated on the same
+        // first-time flag the permission flow uses, so returning users skip straight past it.
+        if (permissionManager.isFirstTimeLaunch() && !welcomeAcknowledged) {
+            mainViewModel.updateOnboardingState(OnboardingState.WELCOME)
+            return
+        }
+
         lifecycleScope.launch {
             // Small delay to show the checking state
             delay(500)

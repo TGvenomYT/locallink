@@ -152,7 +152,19 @@
   <string name="cd_pick_file">Pick file</string>
 
   <!-- About sheet -->
-  <string name="about_tagline">The sidegroup chat</string>
+  <string name="about_tagline">Talk without towers</string>
+
+  <!-- First-run welcome carousel -->
+  <string name="welcome_next">Next</string>
+  <string name="welcome_get_started">Get Started</string>
+  <string name="welcome_skip">Skip</string>
+  <string name="welcome_page_indicator">Page %1$d of %2$d</string>
+  <string name="welcome_p1_title">Talk without towers</string>
+  <string name="welcome_p1_desc">Stay connected when there\'s no signal, no Wi-Fi, and no server in reach. LocalLink hops your messages phone to phone over a Bluetooth mesh.</string>
+  <string name="welcome_p2_title">Every phone is a relay</string>
+  <string name="welcome_p2_desc">Nearby devices link up automatically into a self-healing mesh. Messages travel across up to 7 hops to reach people far beyond Bluetooth range.</string>
+  <string name="welcome_p3_title">Private by design</string>
+  <string name="welcome_p3_desc">No accounts, no phone numbers, no tracking. Private chats are end-to-end encrypted, and a triple-tap wipes everything instantly.</string>
 
   <!-- About sheet: tabs -->
   <string name="about_tab_info">Info</string>
