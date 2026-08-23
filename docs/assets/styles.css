@@ -515,37 +515,43 @@ html[data-theme="light"] .i-moon { display: block; }
 /* ---------- Mobile nav overlay ---------- */
 .nav-hamburger { display: none; }
 .mobile-nav {
-  display: none;
   position: fixed;
   inset: 0;
-  z-index: 100;
-  background: color-mix(in srgb, var(--bg) 96%, transparent);
-  backdrop-filter: blur(16px);
+  z-index: 200;
+  background: var(--bg);
   padding: 5rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.25s ease;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0s 0.25s;
 }
 .mobile-nav.open {
   opacity: 1;
-  pointer-events: all;
+  visibility: visible;
+  transform: translateY(0);
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0s 0s;
 }
 .mobile-nav nav {
   display: flex;
   flex-direction: column;
-  gap: 1.6rem;
-  font-size: 1.3rem;
-  font-weight: 600;
+  gap: 0;
 }
 .mobile-nav a {
   color: var(--text);
+  font-size: 1.3rem;
+  font-weight: 600;
+  padding: 1.2rem 0;
+  border-bottom: 1px solid var(--border-soft);
   transition: color 0.2s;
 }
+.mobile-nav a:last-child { border-bottom: none; }
 .mobile-nav a:hover, .mobile-nav a:active { color: var(--accent); }
 
 @media (max-width: 860px) {
   .nav-hamburger { display: inline-grid; }
-  .mobile-nav { display: block; }
 }
 
 /* ---------- Responsive ---------- */
@@ -573,43 +579,45 @@ html[data-theme="light"] .i-moon { display: block; }
   .nav {
     gap: 0.5rem;
     padding: 0.6rem 0.8rem;
-    position: sticky;
-    top: 0;
-    z-index: 50;
   }
   .brand-name { font-size: 0.95rem; }
   .brand-mark svg { width: 20px; height: 20px; }
-  .nav-actions { gap: 0.5rem; }
-  .nav-actions .btn-sm { padding: 0.45rem 0.75rem; font-size: 0.78rem; }
+  .nav-actions { gap: 0.4rem; }
+  .nav-actions .btn-sm { display: none; } /* hide download btn in nav; CTA is in hero */
+  .icon-btn { width: 34px; height: 34px; }
 
   /* Hero: phone MUCH smaller, everything stacked tight */
   .hero {
-    padding: 1.2rem 1rem 1.8rem;
-    gap: 1.2rem;
+    padding: 0.8rem 1rem 1.5rem;
+    gap: 1rem;
   }
-  .hero h1 { font-size: 2rem; line-height: 1.1; margin-bottom: 0.6rem; }
-  .lede { font-size: 0.92rem; margin-bottom: 1.2rem; }
-  .eyebrow { font-size: 0.75rem; padding: 0.3rem 0.7rem; margin-bottom: 1rem; }
-  .hero-cta { flex-direction: column; gap: 0.6rem; margin-bottom: 1.2rem; }
-  .hero-badges { gap: 0.35rem 0.9rem; font-size: 0.75rem; }
+  .hero h1 { font-size: 1.9rem; line-height: 1.1; margin-bottom: 0.5rem; }
+  .lede { font-size: 0.9rem; margin-bottom: 1rem; }
+  .eyebrow { font-size: 0.72rem; padding: 0.28rem 0.65rem; margin-bottom: 0.8rem; }
+  .hero-cta { flex-direction: column; gap: 0.6rem; margin-bottom: 1rem; }
+  .hero-badges { gap: 0.3rem 0.8rem; font-size: 0.73rem; }
 
   /* Phone mockup: much smaller so it doesn't dominate */
   .hero-art { margin-bottom: 0; }
   .phone {
-    width: 160px;
-    border-radius: 22px;
-    padding: 6px;
+    width: 150px;
+    aspect-ratio: 9 / 16;
+    border-radius: 20px;
+    padding: 5px;
     animation: none; /* disable float on mobile for stability */
+    box-shadow: none;
   }
-  .phone-notch { height: 14px; width: 36%; border-radius: 0 0 8px 8px; top: 8px; }
-  .phone-screen { border-radius: 16px; }
-  .chat-head { padding: 0.9rem 0.5rem 0.4rem; gap: 0.3rem; }
-  .chat-mark { width: 18px; height: 18px; }
-  .chat-mark svg { width: 12px; height: 12px; }
-  .chat-title { font-size: 0.7rem; }
-  .chat-peers { font-size: 0.55rem; padding: 0.08rem 0.35rem; }
-  .chat-body { padding: 0.4rem 0.4rem; gap: 0.3rem; }
-  .msg { font-size: 0.58rem; padding: 0.3rem 0.45rem; border-radius: 8px; max-width: 92%; }
+  .phone-notch { height: 12px; width: 34%; border-radius: 0 0 7px 7px; top: 6px; }
+  .phone-screen { border-radius: 15px; }
+  .chat-head { padding: 0.8rem 0.45rem 0.35rem; gap: 0.25rem; }
+  .chat-mark { width: 16px; height: 16px; }
+  .chat-mark svg { width: 10px; height: 10px; }
+  .chat-title { font-size: 0.6rem; }
+  .chat-peers { font-size: 0.5rem; padding: 0.05rem 0.3rem; }
+  .chat-body { padding: 0.35rem 0.35rem; gap: 0.25rem; }
+  .msg { font-size: 0.52rem; padding: 0.25rem 0.4rem; border-radius: 7px; max-width: 90%; line-height: 1.35; }
+  .msg.typing span { width: 4px; height: 4px; }
+  .msg b { font-size: inherit; }
 
   /* Buttons: full width, good tap targets */
   .btn { width: 100%; justify-content: center; padding: 0.85rem 1.2rem; font-size: 0.9rem; }
@@ -658,14 +666,14 @@ html[data-theme="light"] .i-moon { display: block; }
 
 /* Extra-small screens (iPhone SE, Galaxy Fold outer) */
 @media (max-width: 375px) {
-  .hero h1 { font-size: 1.65rem; }
-  .hero { padding: 1rem 0.8rem 1.5rem; }
-  .phone { width: 140px; }
+  .hero h1 { font-size: 1.6rem; }
+  .hero { padding: 1rem 0.75rem 1.3rem; gap: 1rem; }
+  .phone { width: 130px; }
   .section { padding: 1.8rem 0.7rem; }
-  .download-card { padding: 1.1rem 0.9rem; }
+  .download-card { padding: 1rem 0.8rem; }
   .brand-name { font-size: 0.85rem; }
-  .lede { font-size: 0.88rem; }
-  .eyebrow { font-size: 0.68rem; }
+  .lede { font-size: 0.86rem; }
+  .eyebrow { font-size: 0.65rem; padding: 0.25rem 0.6rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

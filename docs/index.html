@@ -48,7 +48,8 @@
 
     <div class="nav-actions">
       <button id="mobile-menu" class="icon-btn nav-hamburger" aria-label="Open navigation menu" aria-expanded="false">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg class="ham-open" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg class="ham-close" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="display:none"><path d="M18 6 6 18M6 6l12 12"/></svg>
       </button>
       <button id="theme-toggle" class="icon-btn" aria-label="Toggle color theme" title="Toggle theme">
         <svg class="i-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
@@ -56,18 +57,18 @@
       </button>
       <a class="btn btn-primary btn-sm" href="#download">Download</a>
     </div>
-
-    <!-- Mobile slide-in nav -->
-    <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
-      <nav aria-label="Mobile navigation">
-        <a href="#problem">Why</a>
-        <a href="#features">Features</a>
-        <a href="#how">How it works</a>
-        <a href="#download">Download</a>
-        <a href="https://github.com/TGvenomYT/locallink" target="_blank" rel="noopener">GitHub</a>
-      </nav>
-    </div>
   </header>
+
+  <!-- Mobile slide-in nav (must be outside sticky header to avoid stacking context trap) -->
+  <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+    <nav aria-label="Mobile navigation">
+      <a href="#problem">Why</a>
+      <a href="#features">Features</a>
+      <a href="#how">How it works</a>
+      <a href="#download">Download</a>
+      <a href="https://github.com/TGvenomYT/locallink" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </div>
 
   <main id="top">
     <!-- ===== Hero ===== -->

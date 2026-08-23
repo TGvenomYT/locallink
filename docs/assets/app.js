@@ -22,17 +22,24 @@
   var mobileBtn = document.getElementById("mobile-menu");
   var mobileNav = document.getElementById("mobile-nav");
   if (mobileBtn && mobileNav) {
-    mobileBtn.addEventListener("click", function () {
+    var hamOpen = mobileBtn.querySelector(".ham-open");
+    var hamClose = mobileBtn.querySelector(".ham-close");
+    function toggleMenu() {
       var open = mobileNav.classList.toggle("open");
       mobileBtn.setAttribute("aria-expanded", open ? "true" : "false");
       mobileNav.setAttribute("aria-hidden", open ? "false" : "true");
-    });
+      if (hamOpen) hamOpen.style.display = open ? "none" : "block";
+      if (hamClose) hamClose.style.display = open ? "block" : "none";
+    }
+    mobileBtn.addEventListener("click", toggleMenu);
     // Close menu when a link is tapped
     mobileNav.querySelectorAll("a").forEach(function (link) {
       link.addEventListener("click", function () {
         mobileNav.classList.remove("open");
         mobileBtn.setAttribute("aria-expanded", "false");
         mobileNav.setAttribute("aria-hidden", "true");
+        if (hamOpen) hamOpen.style.display = "block";
+        if (hamClose) hamClose.style.display = "none";
       });
     });
   }
@@ -81,8 +88,8 @@
 
   function resize() {
     dpr = Math.min(window.devicePixelRatio || 1, 2);
-    w = canvas.clientWidth = window.innerWidth;
-    h = canvas.clientHeight = window.innerHeight;
+    w = window.innerWidth;
+    h = window.innerHeight;
     canvas.width = w * dpr;
     canvas.height = h * dpr;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
