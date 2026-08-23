@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="12%" r="80%">
+      <stop offset="0%" stop-color="#0f2418"/>
+      <stop offset="60%" stop-color="#04070a"/>
+      <stop offset="100%" stop-color="#04070a"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+
+  <!-- faint mesh lines -->
+  <g stroke="#32d74b" stroke-opacity="0.12" stroke-width="2">
+    <line x1="120" y1="500" x2="330" y2="430"/>
+    <line x1="330" y1="430" x2="250" y2="250"/>
+    <line x1="900" y1="140" x2="1050" y2="300"/>
+    <line x1="1050" y1="300" x2="960" y2="470"/>
+    <line x1="330" y1="430" x2="960" y2="470"/>
+  </g>
+  <g fill="#32d74b" fill-opacity="0.5">
+    <circle cx="120" cy="500" r="5"/><circle cx="330" cy="430" r="5"/>
+    <circle cx="250" cy="250" r="5"/><circle cx="900" cy="140" r="5"/>
+    <circle cx="1050" cy="300" r="5"/><circle cx="960" cy="470" r="5"/>
+  </g>
+
+  <!-- brand mark -->
+  <g transform="translate(90, 250) scale(4.2)">
+    <rect x="-2" y="-2" width="28" height="28" rx="7" fill="#32d74b"/>
+    <g stroke="#04070a" stroke-width="0.9" stroke-linecap="round" fill="none">
+      <path d="M12 7.4 L7.4 15.5 M12 7.4 L16.6 15.5 M7.4 15.5 L16.6 15.5"/>
+    </g>
+    <path fill="#04070a" d="M12 6 L13.4 7.4 L12 8.8 L10.6 7.4 Z"/>
+    <path fill="#04070a" d="M7.4 14.1 L8.8 15.5 L7.4 16.9 L6 15.5 Z"/>
+    <path fill="#04070a" d="M16.6 14.1 L18 15.5 L16.6 16.9 L15.2 15.5 Z"/>
+  </g>
+
+  <text x="92" y="470" font-family="'Geist Mono', monospace" font-size="86" font-weight="700" fill="#f2f6f3" letter-spacing="-3">LocalLink</text>
+  <text x="96" y="540" font-family="'Geist Mono', monospace" font-size="38" fill="#32d74b">Talk without towers.</text>
+  <text x="96" y="590" font-family="'Geist Mono', monospace" font-size="26" fill="#9aa69a">Off-grid Bluetooth mesh messaging · no towers · no servers</text>
+</svg>

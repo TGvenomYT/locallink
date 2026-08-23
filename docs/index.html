@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LocalLink — Talk without towers</title>
+  <meta name="description" content="LocalLink is a decentralized, off-grid messenger. It relays messages over a Bluetooth mesh between nearby phones, so you can chat with no cell tower, no Wi-Fi, and no servers." />
+
+  <!-- Open Graph / social preview -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="LocalLink — Talk without towers" />
+  <meta property="og:description" content="Off-grid, peer-to-peer messaging over a Bluetooth mesh. No towers. No servers. No accounts." />
+  <meta property="og:image" content="assets/social-card.svg" />
+  <meta name="theme-color" content="#04070a" />
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <!-- Animated mesh background -->
+  <canvas id="mesh-bg" aria-hidden="true"></canvas>
+
+  <!-- ===== Nav ===== -->
+  <header class="nav" id="nav">
+    <a class="brand" href="#top" aria-label="LocalLink home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="26" height="26">
+          <g stroke="currentColor" stroke-width="0.9" stroke-linecap="round" fill="none">
+            <path d="M12 7.4 L7.4 15.5 M12 7.4 L16.6 15.5 M7.4 15.5 L16.6 15.5" />
+          </g>
+          <path fill="currentColor" d="M12 6 L13.4 7.4 L12 8.8 L10.6 7.4 Z" />
+          <path fill="currentColor" d="M7.4 14.1 L8.8 15.5 L7.4 16.9 L6 15.5 Z" />
+          <path fill="currentColor" d="M16.6 14.1 L18 15.5 L16.6 16.9 L15.2 15.5 Z" />
+        </svg>
+      </span>
+      <span class="brand-name">LocalLink</span>
+    </a>
+
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#problem">Why</a>
+      <a href="#features">Features</a>
+      <a href="#how">How it works</a>
+      <a href="https://github.com/TGvenomYT/locallink" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button id="theme-toggle" class="icon-btn" aria-label="Toggle color theme" title="Toggle theme">
+        <svg class="i-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="i-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+      </button>
+      <a class="btn btn-primary btn-sm" href="#download">Download</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ===== Hero ===== -->
+    <section class="hero">
+      <div class="hero-inner">
+        <span class="eyebrow"><span class="dot"></span> Off-grid mesh messenger</span>
+        <h1>Talk without <span class="accent">towers</span>.</h1>
+        <p class="lede">
+          When there's no signal, no Wi-Fi, and no server in reach, LocalLink keeps you
+          connected. Messages hop phone-to-phone over a Bluetooth mesh, so a conversation
+          survives dead zones, thick walls, and packed campuses.
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#download">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>
+            Download the APK
+          </a>
+          <a class="btn btn-ghost" href="#how">See how it works</a>
+        </div>
+        <ul class="hero-badges">
+          <li>No cell tower</li>
+          <li>No servers</li>
+          <li>No accounts</li>
+          <li>End-to-end encrypted</li>
+        </ul>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <div class="phone">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="chat-head">
+              <span class="chat-mark">
+                <svg viewBox="0 0 24 24" width="18" height="18">
+                  <g stroke="#04070a" stroke-width="0.9" stroke-linecap="round" fill="none"><path d="M12 7.4 L7.4 15.5 M12 7.4 L16.6 15.5 M7.4 15.5 L16.6 15.5"/></g>
+                  <path fill="#04070a" d="M12 6 L13.4 7.4 L12 8.8 L10.6 7.4 Z"/><path fill="#04070a" d="M7.4 14.1 L8.8 15.5 L7.4 16.9 L6 15.5 Z"/><path fill="#04070a" d="M16.6 14.1 L18 15.5 L16.6 16.9 L15.2 15.5 Z"/>
+                </svg>
+              </span>
+              <span class="chat-title">/ mesh</span>
+              <span class="chat-peers">4 peers</span>
+            </div>
+            <div class="chat-body">
+              <div class="msg them"><b>@maya</b> anyone near the library? no signal here</div>
+              <div class="msg them"><b>@dev</b> mesh's holding — you're 2 hops out</div>
+              <div class="msg me">relaying through 3 phones rn 📡</div>
+              <div class="msg them"><b>@sam</b> got it, loud and clear ✅</div>
+              <div class="msg typing"><span></span><span></span><span></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Problem ===== -->
+    <section id="problem" class="section">
+      <div class="section-head">
+        <span class="kicker">The problem</span>
+        <h2>Coverage still fails where people gather.</h2>
+      </div>
+      <div class="problem-grid">
+        <p class="problem-lead">
+          Even in 2026, connectivity drops to near zero in the places you'd least expect:
+          tree-heavy campuses, basements, concrete stairwells, domed halls, and crowded
+          events where the towers are simply overwhelmed. When the network dies, so does
+          coordination — right when you need it most.
+        </p>
+        <div class="stat-row">
+          <div class="stat"><span class="stat-num">0</span><span class="stat-label">bars needed</span></div>
+          <div class="stat"><span class="stat-num">7</span><span class="stat-label">hops of reach</span></div>
+          <div class="stat"><span class="stat-num">100%</span><span class="stat-label">peer-to-peer</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Features ===== -->
+    <section id="features" class="section">
+      <div class="section-head">
+        <span class="kicker">What you get</span>
+        <h2>Built for the dead zones.</h2>
+      </div>
+      <div class="feature-grid">
+        <article class="card">
+          <div class="card-ic">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7 7 10 10-5 5V2l5 5L7 17"/></svg>
+          </div>
+          <h3>Bluetooth mesh</h3>
+          <p>Messages relay device-to-device through up to 7 hops, extending range far past any single phone. No internet required.</p>
+        </article>
+        <article class="card">
+          <div class="card-ic">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+          </div>
+          <h3>End-to-end encrypted</h3>
+          <p>Private messages use the Noise protocol with forward secrecy. Your identity is derived from keys, not phone numbers.</p>
+        </article>
+        <article class="card">
+          <div class="card-ic">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.2-7-11a7 7 0 0 1 14 0c0 5.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          </div>
+          <h3>Location channels</h3>
+          <p>Join coarse geohash rooms to reach people nearby — never your exact GPS. The mesh, extended over public relays when online.</p>
+        </article>
+        <article class="card">
+          <div class="card-ic">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5M21 3l-7 7M8 21H3v-5M3 21l7-7"/></svg>
+          </div>
+          <h3>Spread it offline</h3>
+          <p>No app store? Share the installer directly to another phone over a local hotspot — the mesh grows itself.</p>
+        </article>
+        <article class="card">
+          <div class="card-ic">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6M12 16v6M2 12h6M16 12h6"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <h3>No accounts, no tracking</h3>
+          <p>No sign-up, no phone number, no data collection. Ephemeral identities that rotate — triple-tap the logo to wipe everything.</p>
+        </article>
+        <article class="card">
+          <div class="card-ic">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 20h8M12 18v2"/></svg>
+          </div>
+          <h3>Voice, images &amp; files</h3>
+          <p>Send voice notes, photos, and files across the mesh — not just text. Runs quietly in the background to keep the network alive.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== How it works ===== -->
+    <section id="how" class="section">
+      <div class="section-head">
+        <span class="kicker">How it works</span>
+        <h2>Every phone is a relay.</h2>
+      </div>
+      <ol class="steps">
+        <li class="step">
+          <span class="step-n">01</span>
+          <h3>Open LocalLink</h3>
+          <p>The app quietly advertises over Bluetooth LE and discovers other LocalLink users around you.</p>
+        </li>
+        <li class="step">
+          <span class="step-n">02</span>
+          <h3>Peers form a mesh</h3>
+          <p>Nearby devices link up automatically into a self-healing network — no setup, no pairing.</p>
+        </li>
+        <li class="step">
+          <span class="step-n">03</span>
+          <h3>Messages hop across</h3>
+          <p>Your message relays phone-to-phone toward its destination, reaching people well beyond Bluetooth range.</p>
+        </li>
+        <li class="step">
+          <span class="step-n">04</span>
+          <h3>Reach further, online</h3>
+          <p>When someone in range has internet, location channels extend the conversation over public relays.</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ===== Download ===== -->
+    <section id="download" class="section download">
+      <div class="download-card">
+        <span class="kicker">Get the app</span>
+        <h2>Install LocalLink</h2>
+        <p class="download-sub">
+          Android 8.0+ (API 26 and up). Grab the latest signed APK from GitHub Releases,
+          then open it on your phone to install.
+        </p>
+
+        <div class="download-actions">
+          <a class="btn btn-primary btn-lg" id="dl-latest" href="https://github.com/TGvenomYT/locallink/releases/latest" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>
+            Download latest APK
+          </a>
+          <a class="btn btn-ghost btn-lg" href="https://github.com/TGvenomYT/locallink/releases" target="_blank" rel="noopener">
+            All releases
+          </a>
+        </div>
+
+        <div class="install-steps">
+          <h4>Installing a downloaded APK</h4>
+          <ol>
+            <li>Download the <code>.apk</code> to your Android phone.</li>
+            <li>Open it — Android will ask to allow installs from this source. Approve it.</li>
+            <li>Tap <b>Install</b>, then grant Bluetooth, location, and notification permissions on first launch.</li>
+            <li>Share it onward: use the in-app hotspot sharing to install LocalLink on nearby phones with no internet at all.</li>
+          </ol>
+          <p class="note">
+            Heads up: sideloaded APKs are self-signed for testing. If an older LocalLink is
+            already installed with a different signature, uninstall it first.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22">
+            <g stroke="currentColor" stroke-width="0.9" stroke-linecap="round" fill="none"><path d="M12 7.4 L7.4 15.5 M12 7.4 L16.6 15.5 M7.4 15.5 L16.6 15.5"/></g>
+            <path fill="currentColor" d="M12 6 L13.4 7.4 L12 8.8 L10.6 7.4 Z"/><path fill="currentColor" d="M7.4 14.1 L8.8 15.5 L7.4 16.9 L6 15.5 Z"/><path fill="currentColor" d="M16.6 14.1 L18 15.5 L16.6 16.9 L15.2 15.5 Z"/>
+          </svg>
+        </span>
+        <div>
+          <strong>LocalLink</strong>
+          <span>Talk without towers.</span>
+        </div>
+      </div>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="#features">Features</a>
+        <a href="#how">How it works</a>
+        <a href="#download">Download</a>
+        <a href="https://github.com/TGvenomYT/locallink" target="_blank" rel="noopener">Source</a>
+      </nav>
+    </div>
+    <p class="footer-fine">Open source · Privacy first · Decentralized · Built for the dead zones.</p>
+  </footer>
+
+  <script src="assets/app.js" defer></script>
+</body>
+</html>
