@@ -63,7 +63,9 @@ gen/
 # Google services
 google-services.json
 
-# Keystore files
+# Keystore files and backups (whole directory, not just *.jks — also holds
+# the encrypted offline backup archive)
+keystore/
 *.jks
 *.keystore
 keystore.properties
