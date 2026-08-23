@@ -18,6 +18,25 @@
     });
   }
 
+  /* ---------- Mobile nav hamburger ---------- */
+  var mobileBtn = document.getElementById("mobile-menu");
+  var mobileNav = document.getElementById("mobile-nav");
+  if (mobileBtn && mobileNav) {
+    mobileBtn.addEventListener("click", function () {
+      var open = mobileNav.classList.toggle("open");
+      mobileBtn.setAttribute("aria-expanded", open ? "true" : "false");
+      mobileNav.setAttribute("aria-hidden", open ? "false" : "true");
+    });
+    // Close menu when a link is tapped
+    mobileNav.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        mobileNav.classList.remove("open");
+        mobileBtn.setAttribute("aria-expanded", "false");
+        mobileNav.setAttribute("aria-hidden", "true");
+      });
+    });
+  }
+
   /* ---------- Sticky nav shadow ---------- */
   var nav = document.getElementById("nav");
   function onScroll() {
@@ -68,6 +87,8 @@
     canvas.height = h * dpr;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     var count = Math.min(70, Math.round((w * h) / 26000));
+    // Fewer particles on mobile for smoother 60fps
+    if (w < 600) count = Math.min(count, 28);
     nodes = [];
     for (var i = 0; i < count; i++) {
       nodes.push({
