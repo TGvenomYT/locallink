@@ -231,14 +231,18 @@
         <span class="kicker">Get the app</span>
         <h2>Install LocalLink</h2>
         <p class="download-sub">
-          Android 8.0+ (API 26 and up). Grab the latest signed APK from GitHub Releases,
-          then open it on your phone to install.
+          Android 8.0+ (API 26 and up) and macOS 13+ (Apple Silicon or Intel). Grab the
+          latest build from GitHub Releases, then install it on your phone or Mac.
         </p>
 
         <div class="download-actions">
           <a class="btn btn-primary btn-lg" id="dl-latest" href="https://github.com/TGvenomYT/locallink/releases/latest" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>
             Download latest APK
+          </a>
+          <a class="btn btn-primary btn-lg" id="dl-mac" href="https://github.com/TGvenomYT/locallink/releases/download/mac-v1.0.0/LocalLink-1.0.0-mac.dmg" rel="noopener">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>
+            Download for Mac
           </a>
           <a class="btn btn-ghost btn-lg" href="https://github.com/TGvenomYT/locallink/releases" target="_blank" rel="noopener">
             All releases
@@ -256,6 +260,21 @@
           <p class="note">
             Heads up: sideloaded APKs are self-signed for testing. If an older LocalLink is
             already installed with a different signature, uninstall it first.
+          </p>
+        </div>
+
+        <div class="install-steps" id="install-mac">
+          <h4>Installing on a Mac</h4>
+          <ol>
+            <li>Download <code>LocalLink-1.0.0-mac.dmg</code>, open it, and drag <b>LocalLink</b> into <b>Applications</b>.</li>
+            <li>Open LocalLink. The first time, macOS blocks it because it is not notarized by Apple yet.
+              Go to <b>System Settings → Privacy &amp; Security</b>, scroll down, click <b>Open Anyway</b> next to LocalLink, and confirm.</li>
+            <li>Allow <b>Bluetooth</b> when asked. Your Mac then finds nearby LocalLink phones (and bitchat users) with no internet.</li>
+            <li>Send files: in any mesh chat, click the paperclip → <b>choose file</b>, or drag a file onto the chat. Files up to 1&nbsp;MB.</li>
+          </ol>
+          <p class="note">
+            Phones on LocalLink 1.0.3 accept files up to about 100&nbsp;KB from a Mac; larger files
+            need the next Android release. The Mac app is built from bitchat's macOS app.
           </p>
         </div>
       </div>

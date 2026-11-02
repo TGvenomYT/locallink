@@ -454,6 +454,7 @@ html[data-theme="light"] .i-moon { display: block; }
   border-radius: var(--radius);
   padding: 1.5rem 1.7rem;
 }
+.install-steps + .install-steps { margin-top: 1.2rem; }
 .install-steps h4 {
   font-size: 0.8rem;
   text-transform: uppercase;
